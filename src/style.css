@@ -1,3 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Nunito+Sans:wght@300;400&family=Yeseva+One&display=swap");
+body a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
 .container {
   min-width: 1440px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 116px;
+}
+.header__user-block {
+  display: flex;
+  margin-right: 160px;
+  align-items: center;
+  justify-content: space-between;
+  width: 120px;
+}
+.header-logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29.26px;
+  margin-left: 160px;
+}
+
+.header-nav {
+  display: flex;
+  width: 372px;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-nav__link {
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+}
+.header-nav__link_active {
+  font-weight: 700;
+}
+
+.posters {
+  display: flex;
+}
+
+.poster-items__item {
+  width: 1120px;
+  height: 702px;
+}
+.poster-items__img {
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */
