@@ -21,6 +21,7 @@ body {
   display: flex;
   justify-content: space-between;
   height: 116px;
+  transition: 0.3s;
   &__user-block {
     display: flex;
     margin-right: 160px;
@@ -30,12 +31,37 @@ body {
   }
 
   &__user-info {
+    &:hover {
+      transition: 0.3s;
+      transform: scale(1.2);
+    }
   }
 
   &__search {
+    &:hover {
+      transition: 0.3s;
+      transform: scale(1.2);
+    }
   }
 
   &__cart {
+    display: flex;
+    &:hover {
+      transition: 0.3s;
+      transform: scale(1.2);
+    }
+    .cart-count {
+      display: flex;
+      justify-content: center;
+      width: 13px;
+      height: 13px;
+      color: white;
+      background-color: red;
+      border-radius: 50%;
+      font-family: $Montserrat;
+      font-weight: 500;
+      font-size: 10px;
+    }
   }
 }
 
@@ -60,8 +86,12 @@ body {
     font-weight: 500;
     font-size: 10px;
     line-height: 12px;
+    transition: 0.3s;
     &_active {
       font-weight: 700;
+    }
+    &:hover {
+      transform: scale(1.2);
     }
   }
 }

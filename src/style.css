@@ -13,6 +13,7 @@ body a {
   display: flex;
   justify-content: space-between;
   height: 116px;
+  transition: 0.3s;
 }
 .header__user-block {
   display: flex;
@@ -21,6 +22,34 @@ body a {
   justify-content: space-between;
   width: 120px;
 }
+.header__user-info:hover {
+  transition: 0.3s;
+  transform: scale(1.2);
+}
+.header__search:hover {
+  transition: 0.3s;
+  transform: scale(1.2);
+}
+.header__cart {
+  display: flex;
+}
+.header__cart:hover {
+  transition: 0.3s;
+  transform: scale(1.2);
+}
+.header__cart .cart-count {
+  display: flex;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  color: white;
+  background-color: red;
+  border-radius: 50%;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+}
+
 .header-logo {
   display: flex;
   justify-content: space-between;
@@ -44,9 +73,13 @@ body a {
   font-weight: 500;
   font-size: 10px;
   line-height: 12px;
+  transition: 0.3s;
 }
 .header-nav__link_active {
   font-weight: 700;
+}
+.header-nav__link:hover {
+  transform: scale(1.2);
 }
 
 .posters {
