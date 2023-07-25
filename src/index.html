@@ -6,118 +6,156 @@
     <title>Bookshop Project</title>
   </head>
   <body>
-    <header>
+    <header class="header container">
       <div class="header__logo">Bookshop</div>
-      <nav class="header__nav">
-        <a href="#" class="header__link">Books</a>
-        <a href="#" class="header__link">Audiobooks</a>
-        <a href="#" class="header__link">Stationery & gifts</a>
-        <a href="#" class="header__link">blog</a>
+      <nav class="header-nav">
+        <a href="#" class="header-nav__link header-nav__link_active">Books</a>
+        <a href="#" class="header-nav__link">Audiobooks</a>
+        <a href="#" class="header-nav__link">Stationery & gifts</a>
+        <a href="#" class="header-nav__link">blog</a>
       </nav>
       <div class="header__user-block">
-        <div class="user"></div>
-        <div class="search"></div>
-        <div class="cart"></div>
+        <div class="header__user-info"></div>
+        <div class="header__search"></div>
+        <div class="header__cart"></div>
       </div>
     </header>
     <main>
-      <section class="posters">
-        <div class="posters__items"></div>
-        <div class="poster__sliderdotz"></div>
-        <div class="posters__promoblock1"></div>
-        <div class="posters__promoblock2"></div>
+      <section class="posters container">
+        <div class="poster-items">
+          <div class="poster-items__item"></div>
+          <div class="poster-items__item"></div>
+          <div class="poster-items__item"></div>
+        </div>
+        <div class="sliderdotz">
+          <div class="sliderdotz__item"></div>
+          <div class="sliderdotz__item"></div>
+          <div class="sliderdotz__item"></div>
+        </div>
+        <div class="poster-promo">
+          <a href="#" class="poster-promo__block1">Change old book on new</a>
+          <a href="#" class="poster-promo__block2">top 100 books 2022</a>
+        </div>
       </section>
-      <section class="shop-block">
-        <nav class="shop-block__side-menu">
-          <a href="#" class="shop-block__menu-item">Architecture</a>
-          <a href="#" class="shop-block__menu-item">Art & Fashion</a>
-          <a href="#" class="shop-block__menu-item">Biography</a>
-          <a href="#" class="shop-block__menu-item">Business</a>
-          <a href="#" class="shop-block__menu-item">Crafts & Hobbies</a>
-          <a href="#" class="shop-block__menu-item">Drama</a>
-          <a href="#" class="shop-block__menu-item">Fiction</a>
-          <a href="#" class="shop-block__menu-item">Food & Drink</a>
-          <a href="#" class="shop-block__menu-item">Health & Wellbeing</a>
-          <a href="#" class="shop-block__menu-item">History & Politics</a>
-          <a href="#" class="shop-block__menu-item">Humor</a>
-          <a href="#" class="shop-block__menu-item">Poetry</a>
-          <a href="#" class="shop-block__menu-item">Psychology</a>
-          <a href="#" class="shop-block__menu-item">Science</a>
-          <a href="#" class="shop-block__menu-item">Technology</a>
-          <a href="#" class="shop-block__menu-item">Travel & Maps</a>
+      <section class="shop-block container">
+        <nav class="book-list">
+          <a href="#" class="book-list__list-item book-list__list-item_active"
+            >Architecture</a
+          >
+          <a href="#" class="book-list__list-item">Art & Fashion</a>
+          <a href="#" class="book-list__list-item">Biography</a>
+          <a href="#" class="book-list__list-item">Business</a>
+          <a href="#" class="book-list__list-item">Crafts & Hobbies</a>
+          <a href="#" class="book-list__list-item">Drama</a>
+          <a href="#" class="book-list__list-item">Fiction</a>
+          <a href="#" class="book-list__list-item">Food & Drink</a>
+          <a href="#" class="book-list__list-item">Health & Wellbeing</a>
+          <a href="#" class="book-list__list-item">History & Politics</a>
+          <a href="#" class="book-list__list-item">Humor</a>
+          <a href="#" class="book-list__list-item">Poetry</a>
+          <a href="#" class="book-list__list-item">Psychology</a>
+          <a href="#" class="book-list__list-item">Science</a>
+          <a href="#" class="book-list__list-item">Technology</a>
+          <a href="#" class="book-list__list-item">Travel & Maps</a>
         </nav>
-        <div class="shop-block__cards-block">
+        <div class="cards-block">
           <div class="cards-item">
             <div class="cards-item__img"></div>
-            <div class="cards-item__author"></div>
-            <div class="cards-item__title"></div>
-            <div class="cards-item__grade-block">
-              <div class="cards-item__stars"></div>
-              <div class="cards-item__views"></div>
+            <div class="cards-item__info">
+              <div class="cards-item__author"></div>
+              <div class="cards-item__title"></div>
+              <div class="cards-item__grade-block">
+                <div class="cards-item__stars"></div>
+                <div class="cards-item__views"></div>
+              </div>
+              <div class="cards-item__disc"></div>
+              <div class="cards-item__price"></div>
+              <button class="cards-item__button button">buy now</button>
             </div>
-            <div class="cards-item__disc"></div>
-            <div class="cards-item__price"></div>
-            <button class="cards-item__button button">buy now</button>
           </div>
           <div class="cards-item">
             <div class="cards-item__img"></div>
-            <div class="cards-item__author"></div>
-            <div class="cards-item__title"></div>
-            <div class="cards-item__grade-block">
-              <div class="cards-item__stars"></div>
-              <div class="cards-item__views"></div>
+            <div class="cards-item__info">
+              <div class="cards-item__author"></div>
+              <div class="cards-item__title"></div>
+              <div class="cards-item__grade-block">
+                <div class="cards-item__stars"></div>
+                <div class="cards-item__views"></div>
+              </div>
+              <div class="cards-item__disc"></div>
+              <div class="cards-item__price"></div>
+              <button class="cards-item__button button">buy now</button>
             </div>
-            <div class="cards-item__disc"></div>
-            <div class="cards-item__price"></div>
-            <button class="cards-item__button button">buy now</button>
           </div>
           <div class="cards-item">
             <div class="cards-item__img"></div>
-            <div class="cards-item__author"></div>
-            <div class="cards-item__title"></div>
-            <div class="cards-item__grade-block">
-              <div class="cards-item__stars"></div>
-              <div class="cards-item__views"></div>
+            <div class="cards-item__info">
+              <div class="cards-item__author"></div>
+              <div class="cards-item__title"></div>
+              <div class="cards-item__grade-block">
+                <div class="cards-item__stars"></div>
+                <div class="cards-item__views"></div>
+              </div>
+              <div class="cards-item__disc"></div>
+              <div class="cards-item__price"></div>
+              <button class="cards-item__button button">buy now</button>
             </div>
-            <div class="cards-item__disc"></div>
-            <div class="cards-item__price"></div>
-            <button class="cards-item__button">buy now</button>
           </div>
           <div class="cards-item">
             <div class="cards-item__img"></div>
-            <div class="cards-item__author"></div>
-            <div class="cards-item__title"></div>
-            <div class="cards-item__grade-block">
-              <div class="cards-item__stars"></div>
-              <div class="cards-item__views"></div>
+            <div class="cards-item__info">
+              <div class="cards-item__author"></div>
+              <div class="cards-item__title"></div>
+              <div class="cards-item__grade-block">
+                <div class="cards-item__stars"></div>
+                <div class="cards-item__views"></div>
+              </div>
+              <div class="cards-item__disc"></div>
+              <div class="cards-item__price"></div>
+              <button class="cards-item__button button">buy now</button>
             </div>
-            <div class="cards-item__disc"></div>
-            <div class="cards-item__price"></div>
-            <button class="cards-item__button">buy now</button>
           </div>
           <div class="cards-item">
             <div class="cards-item__img"></div>
-            <div class="cards-item__author"></div>
-            <div class="cards-item__title"></div>
-            <div class="cards-item__grade-block">
-              <div class="cards-item__stars"></div>
-              <div class="cards-item__views"></div>
+            <div class="cards-item__info">
+              <div class="cards-item__author"></div>
+              <div class="cards-item__title"></div>
+              <div class="cards-item__grade-block">
+                <div class="cards-item__stars"></div>
+                <div class="cards-item__views"></div>
+              </div>
+              <div class="cards-item__disc"></div>
+              <div class="cards-item__price"></div>
+              <button class="cards-item__button button">buy now</button>
             </div>
-            <div class="cards-item__disc"></div>
-            <div class="cards-item__price"></div>
-            <button class="cards-item__button">buy now</button>
           </div>
           <div class="cards-item">
             <div class="cards-item__img"></div>
-            <div class="cards-item__author"></div>
-            <div class="cards-item__title"></div>
-            <div class="cards-item__grade-block">
-              <div class="cards-item__stars"></div>
-              <div class="cards-item__views"></div>
+            <div class="cards-item__info">
+              <div class="cards-item__author"></div>
+              <div class="cards-item__title"></div>
+              <div class="cards-item__grade-block">
+                <div class="cards-item__stars"></div>
+                <div class="cards-item__views"></div>
+              </div>
+              <div class="cards-item__disc"></div>
+              <div class="cards-item__price"></div>
+              <button class="cards-item__button button">buy now</button>
             </div>
-            <div class="cards-item__disc"></div>
-            <div class="cards-item__price"></div>
-            <button class="cards-item__button">buy now</button>
+          </div>
+          <div class="cards-item">
+            <div class="cards-item__img"></div>
+            <div class="cards-item__info">
+              <div class="cards-item__author"></div>
+              <div class="cards-item__title"></div>
+              <div class="cards-item__grade-block">
+                <div class="cards-item__stars"></div>
+                <div class="cards-item__views"></div>
+              </div>
+              <div class="cards-item__disc"></div>
+              <div class="cards-item__price"></div>
+              <button class="cards-item__button button">buy now</button>
+            </div>
           </div>
         </div>
         <button class="shop-block__button">load more</button>
