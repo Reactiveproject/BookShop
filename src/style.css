@@ -1,4 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Nunito+Sans:wght@300;400&family=Yeseva+One&display=swap");
+.cards-block__button, .books-block button {
+  width: 176px;
+  height: 45px;
+  border: 1px solid #4c3db2;
+  background-color: white;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 8px;
+  line-height: 10px;
+  color: #4c3db2;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -107,7 +120,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 120px;
 }
 
 .poster-items {
@@ -125,6 +137,7 @@ main {
   width: 56px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 105px;
 }
 .sliderdotz__item {
   background-color: #efeef6;
@@ -189,4 +202,135 @@ main {
 }
 .poster-promo__block2 .arrow {
   padding-left: 20px;
+}
+
+.shop-block {
+  display: flex;
+  position: relative;
+}
+
+.book-list {
+  width: 416px;
+  height: 710px;
+  background-color: #efeef6;
+  display: flex;
+  flex-direction: column;
+}
+.book-list :first-child {
+  margin-top: 45px;
+}
+.book-list :last-child {
+  padding-bottom: 0px;
+}
+.book-list__list-item {
+  margin-left: 160px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14px;
+  color: #5c6a79;
+  padding-bottom: 23px;
+}
+.book-list__list-item_active {
+  position: relative;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1c2a39;
+}
+.book-list__list-item_active::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: -14px;
+  top: 4px;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background-color: #756ad3;
+}
+
+.books-block {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 25px;
+  left: 356px;
+}
+.books-block button {
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.tabbed {
+  border: 1px solid #eeedf5;
+  color: #5c6a79;
+}
+
+.cards-block {
+  display: grid;
+  grid-template-columns: 424px 424px;
+  grid-template-rows: 300px 300px 300px;
+  row-gap: 96px;
+  -moz-column-gap: 76px;
+       column-gap: 76px;
+  margin-bottom: 96px;
+}
+.cards-block__cards-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cards-item__img {
+  width: 212px;
+  height: 300px;
+}
+.cards-item__img img {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 25px 20px -15px rgba(185, 185, 185, 0.6);
+}
+.cards-item__info {
+  width: 176px;
+  height: 203px;
+  margin-left: 36px;
+  margin-top: 49px;
+}
+.cards-item__author {
+  font-family: "Open sans", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 13px;
+  margin-bottom: 4px;
+}
+.cards-item__title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  margin-bottom: 4px;
+}
+.cards-item__grade-block {
+  display: flex;
+  margin-bottom: 16px;
+}
+.cards-item__views {
+  font-family: "Open sans", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 13px;
+}
+.cards-item__disc {
+  font-family: "Open sans", sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 13px;
+  margin-bottom: 16px;
+}
+.cards-item__price {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 16px;
+  margin-bottom: 16px;
 }/*# sourceMappingURL=style.css.map */
