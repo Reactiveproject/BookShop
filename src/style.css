@@ -12,6 +12,11 @@
   color: #4c3db2;
 }
 
+.sliderdotz__item:hover, .header__search:hover, .header__user-info:hover {
+  transition: 0.3s;
+  transform: scale(1.2);
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -45,14 +50,6 @@ body p {
   align-items: center;
   justify-content: space-between;
   width: 120px;
-}
-.header__user-info:hover {
-  transition: 0.3s;
-  transform: scale(1.2);
-}
-.header__search:hover {
-  transition: 0.3s;
-  transform: scale(1.2);
 }
 .header__cart {
   display: flex;
@@ -131,7 +128,12 @@ main {
   margin-bottom: 17px;
 }
 .poster-items__item {
+  display: none;
   height: 100%;
+  position: relative;
+}
+.poster-items__item_active {
+  display: block;
 }
 .sliderdotz {
   width: 56px;
@@ -148,7 +150,6 @@ main {
 .sliderdotz__item_active {
   background-color: #9e98dc;
 }
-
 .poster-promo__block1 {
   position: absolute;
   width: 149px;
