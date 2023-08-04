@@ -12,7 +12,7 @@
   color: #4c3db2;
 }
 
-.sliderdotz__item:hover, .header__search:hover, .header__user-info:hover {
+.book-list__list-item:hover, .sliderdotz__item:hover, .header__search:hover, .header__user-info:hover {
   transition: 0.3s;
   transform: scale(1.2);
 }
@@ -146,6 +146,7 @@ main {
   border-radius: 50%;
   width: 12px;
   height: 12px;
+  cursor: pointer;
 }
 .sliderdotz__item_active {
   background-color: #9e98dc;
@@ -231,6 +232,10 @@ main {
   line-height: 14px;
   color: #5c6a79;
   padding-bottom: 23px;
+  cursor: pointer;
+}
+.book-list__list-item:hover {
+  transform: scale(1.1);
 }
 .book-list__list-item_active {
   position: relative;

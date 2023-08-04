@@ -1,8 +1,11 @@
-// Variables & Constantes
+//// Variables & Constantes
 const posterItems = document.querySelectorAll(".poster-items__item");
 const posterDotz = document.querySelectorAll(".sliderdotz__item");
+const bookCategory = document.querySelectorAll(".book-list__list-item");
 
-/////////Start Slider
+// let subjResp = document.querySelector();
+
+////Start Slider
 
 function initSlider() {
   let currentIndex = 0;
@@ -45,4 +48,43 @@ function initSlider() {
 
 addEventListener("DOMContentLoaded", initSlider);
 
-//////// End Slider
+//// End Slider
+
+function bookCategoryNav() {
+  let currentIndex = 0;
+
+  const thisBookCategoty = (index) => {
+    bookCategory.forEach((item) =>
+      item.classList.remove("book-list__list-item_active")
+    );
+    bookCategory[index].classList.add("book-list__list-item_active");
+  };
+
+  const chooseBookCategory = (item, index) => {
+    item.addEventListener("click", () => {
+      currentIndex = index;
+      thisBookCategoty(currentIndex);
+    });
+  };
+
+  bookCategory.forEach(chooseBookCategory);
+}
+
+bookCategoryNav();
+
+//// Response to GoogleBooks
+
+let subjResp = document.querySelector(".book-list__list-item").innerText;
+
+const APIKey = "AIzaSyCtJI5Ny3xpinAktf4VXAeiWG3j0-j1B1k";
+const URL = `https://www.googleapis.com/books/v1/volumes?q="subject:${subjResp}"&key=${APIKey}&printType=books&startIndex=3&maxResults=6&langRestrict=en`;
+
+console.log(subjResp);
+
+let response = fetch(URL)
+  .then((res) => res.json())
+  .then((result) => {
+    console.log(result);
+
+    return result.items[0].volumeInfo.title;
+  });

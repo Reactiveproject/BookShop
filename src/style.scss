@@ -172,6 +172,7 @@ main {
     border-radius: 50%;
     width: 12px;
     height: 12px;
+    cursor: pointer;
     &_active {
       background-color: #9e98dc;
     }
@@ -264,6 +265,11 @@ main {
     line-height: 14px;
     color: #5c6a79;
     padding-bottom: 23px;
+    cursor: pointer;
+    &:hover {
+      @extend %Hover;
+      transform: scale(1.1);
+    }
     &_active {
       position: relative;
       font-size: 16px;
