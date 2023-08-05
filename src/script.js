@@ -1,9 +1,19 @@
 //// Variables & Constantes
+const APIKey = "AIzaSyCtJI5Ny3xpinAktf4VXAeiWG3j0-j1B1k";
+
 const posterItems = document.querySelectorAll(".poster-items__item");
 const posterDotz = document.querySelectorAll(".sliderdotz__item");
 const bookCategory = document.querySelectorAll(".book-list__list-item");
 
-// let subjResp = document.querySelector();
+const bookCards = document.querySelectorAll(".cards-block__cards-item");
+
+const itemImages = document.querySelectorAll(".cards-item__img");
+const itemAuthor = document.querySelectorAll(".cards-item__author");
+const itemTitles = document.querySelectorAll(".cards-item__title");
+const itemStars = document.querySelectorAll(".cards-item__stars");
+const itemViews = document.querySelectorAll(".cards-item__views");
+const itemDiscs = document.querySelectorAll(".cards-item__disc");
+const itemPrices = document.querySelectorAll(".cards-item__price");
 
 ////Start Slider
 
@@ -64,9 +74,10 @@ function bookCategoryNav() {
     item.addEventListener("click", () => {
       currentIndex = index;
       thisBookCategoty(currentIndex);
+      checkCatForResp();
+      response();
     });
   };
-
   bookCategory.forEach(chooseBookCategory);
 }
 
@@ -74,17 +85,41 @@ bookCategoryNav();
 
 //// Response to GoogleBooks
 
-let subjResp = document.querySelector(".book-list__list-item").innerText;
+let subjResp;
 
-const APIKey = "AIzaSyCtJI5Ny3xpinAktf4VXAeiWG3j0-j1B1k";
-const URL = `https://www.googleapis.com/books/v1/volumes?q="subject:${subjResp}"&key=${APIKey}&printType=books&startIndex=3&maxResults=6&langRestrict=en`;
-
-console.log(subjResp);
-
-let response = fetch(URL)
-  .then((res) => res.json())
-  .then((result) => {
-    console.log(result);
-
-    return result.items[0].volumeInfo.title;
+const checkCatForResp = () => {
+  bookCategory.forEach((item) => {
+    if (item.classList.contains("book-list__list-item_active")) {
+      subjResp = item.innerText;
+      console.log(subjResp);
+    }
   });
+};
+
+checkCatForResp();
+
+// console.log(subjResp);
+
+function response() {
+  let URL = `https://www.googleapis.com/books/v1/volumes?q="subject:${subjResp}"&key=${APIKey}&printType=books&startIndex=0&maxResults=6&langRestrict=en`;
+  fetch(URL)
+    .then((res) => res.json())
+    .then((result) => {
+      // console.log(result);
+      console.log(result.items[0].volumeInfo.title); //Title
+      // console.log(result.items[0].volumeInfo.authors[0]); //AUthor
+      // // itemImages[1] = result.items[1].volumeInfo.imageLinks.thumbnail; //image?
+      // console.log(result.items[0].searchInfo.textSnippet); // Discritipon
+      // console.log(result.items[0].searchInfo.textSnippet); //Price
+    });
+}
+
+response();
+
+// //// Show Info form googlebook response
+
+// // const showCards = (booksArr) => {
+// //   booksArr.forEach((item, index) => {
+// //     console.log(item);
+// //   });
+// // };
