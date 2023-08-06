@@ -15,6 +15,20 @@ const itemViews = document.querySelectorAll(".cards-item__views");
 const itemDiscs = document.querySelectorAll(".cards-item__disc");
 const itemPrices = document.querySelectorAll(".cards-item__price");
 
+const loadMoreButton = document.querySelector("books-block__button");
+
+const booksArray = [];
+
+const bookCardItem = {
+  image: "",
+  author: "",
+  title: "1",
+  stars: "",
+  views: "",
+  disc: "",
+  price: "",
+};
+
 ////Start Slider
 
 function initSlider() {
@@ -73,9 +87,10 @@ function bookCategoryNav() {
   const chooseBookCategory = (item, index) => {
     item.addEventListener("click", () => {
       currentIndex = index;
+
       thisBookCategoty(currentIndex);
       checkCatForResp();
-      response();
+      showCards();
     });
   };
   bookCategory.forEach(chooseBookCategory);
@@ -100,26 +115,49 @@ checkCatForResp();
 
 // console.log(subjResp);
 
-function response() {
-  let URL = `https://www.googleapis.com/books/v1/volumes?q="subject:${subjResp}"&key=${APIKey}&printType=books&startIndex=0&maxResults=6&langRestrict=en`;
-  fetch(URL)
-    .then((res) => res.json())
-    .then((result) => {
-      // console.log(result);
-      console.log(result.items[0].volumeInfo.title); //Title
-      // console.log(result.items[0].volumeInfo.authors[0]); //AUthor
-      // // itemImages[1] = result.items[1].volumeInfo.imageLinks.thumbnail; //image?
-      // console.log(result.items[0].searchInfo.textSnippet); // Discritipon
-      // console.log(result.items[0].searchInfo.textSnippet); //Price
-    });
-}
+//FETCH response
 
-response();
+// let respBookArray = [];
+
+const showCards = () => {
+  let titles = [];
+
+  function response() {
+    let URL = `https://www.googleapis.com/books/v1/volumes?q="subject:${subjResp}"&key=${APIKey}&printType=books&startIndex=0&maxResults=6&langRestrict=en`;
+    fetch(URL)
+      .then((res) => res.json())
+      .then((result) => {
+        return result.items;
+      })
+      .then((data) => {
+        for (i = 0; i < data.length + 1; i++) {
+          itemTitles[i].innerText = data[i].volumeInfo.title;
+          itemAuthor[i].innerHTML = data[i].volumeInfo.authors[0];
+          itemImages[
+            i
+          ].innerHTML = `<img src="${data[i].volumeInfo.imageLinks.thumbnail}" alt="" />`;
+          itemDiscs[i].innerText = data[i].searchInfo.textSnippet;
+        }
+      });
+  }
+  response();
+};
+
+showCards();
+
+// };
+// console.log(result.items[0].volumeInfo.title); //Title
+// console.log(result.items[0].volumeInfo.authors[0]); //AUthor
+// itemImages[0] = result.items[0].volumeInfo.imageLinks.thumbnail; //image
+// console.log(result.items[0].searchInfo.textSnippet); // Discritipon
+// console.log(result.items[0].searchInfo.textSnippet); //Price
+
+////
 
 // //// Show Info form googlebook response
 
-// // const showCards = (booksArr) => {
-// //   booksArr.forEach((item, index) => {
-// //     console.log(item);
-// //   });
-// // };
+// const showCards = () => {
+//   itemImages.forEach((item, index) => {
+//     item.innerHTML = `<img src=${itemImg} alt="" />`;
+//   });
+// };
