@@ -15,7 +15,7 @@ const itemViews = document.querySelectorAll(".cards-item__views");
 const itemDiscs = document.querySelectorAll(".cards-item__disc");
 const itemPrices = document.querySelectorAll(".cards-item__price");
 
-const loadMoreButton = document.querySelector("books-block__button");
+const loadMoreButton = document.querySelector(".books-block__button");
 
 const booksArray = [];
 
@@ -140,6 +140,9 @@ const showCards = () => {
           ].innerHTML = `<img src="${data[i].volumeInfo.imageLinks.thumbnail}" alt="" />`;
           itemDiscs[i].innerText = data[i].searchInfo.textSnippet;
         }
+      })
+      .catch((error) => {
+        console.error(`ERROR!  ${error}`);
       });
   }
   response();
@@ -147,6 +150,14 @@ const showCards = () => {
 
 showCards();
 
+const showMoreCards = () => {
+  loadMoreButton.addEventListener("click", () => {
+    respStartIndex += 6;
+    showCards();
+  });
+};
+
+showMoreCards();
 // };
 // console.log(result.items[0].volumeInfo.title); //Title
 // console.log(result.items[0].volumeInfo.authors[0]); //AUthor
