@@ -201,6 +201,7 @@ main {
     align-items: start;
     justify-content: center;
     cursor: pointer;
+    box-shadow: 0px 25px 20px -15px rgba(185, 185, 185, 0.6);
     & p {
       padding-top: 100px;
       padding-left: 20px;
@@ -229,6 +230,7 @@ main {
     align-items: start;
     justify-content: center;
     cursor: pointer;
+    box-shadow: 0px 25px 20px -15px rgba(185, 185, 185, 0.6);
     & p {
       padding-top: 149px;
       padding-left: 20px;
@@ -382,6 +384,11 @@ main {
     font-weight: 400;
     line-height: 13px;
     margin-bottom: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 
   &__price {

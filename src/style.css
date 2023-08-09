@@ -169,6 +169,7 @@ main {
   align-items: start;
   justify-content: center;
   cursor: pointer;
+  box-shadow: 0px 25px 20px -15px rgba(185, 185, 185, 0.6);
 }
 .poster-promo__block1 p {
   padding-top: 100px;
@@ -196,6 +197,7 @@ main {
   align-items: start;
   justify-content: center;
   cursor: pointer;
+  box-shadow: 0px 25px 20px -15px rgba(185, 185, 185, 0.6);
 }
 .poster-promo__block2 p {
   padding-top: 149px;
@@ -332,6 +334,11 @@ main {
   font-weight: 400;
   line-height: 13px;
   margin-bottom: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 .cards-item__price {
   font-family: "Montserrat", sans-serif;

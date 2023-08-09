@@ -62,7 +62,7 @@ function initSlider() {
       } else {
         index++;
       }
-    }, 3000);
+    }, 5000);
   };
 
   posterItems.forEach(Scroll);
@@ -119,11 +119,13 @@ checkCatForResp();
 
 // let respBookArray = [];
 
+let respStartIndex = 0;
+
 const showCards = () => {
   let titles = [];
 
   function response() {
-    let URL = `https://www.googleapis.com/books/v1/volumes?q="subject:${subjResp}"&key=${APIKey}&printType=books&startIndex=0&maxResults=6&langRestrict=en`;
+    let URL = `https://www.googleapis.com/books/v1/volumes?q="subject:${subjResp}"&key=${APIKey}&printType=books&startIndex=${respStartIndex}&maxResults=6&langRestrict=en`;
     fetch(URL)
       .then((res) => res.json())
       .then((result) => {
