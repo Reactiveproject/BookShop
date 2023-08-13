@@ -87,7 +87,6 @@ function bookCategoryNav() {
   const chooseBookCategory = (item, index) => {
     item.addEventListener("click", () => {
       currentIndex = index;
-
       thisBookCategoty(currentIndex);
       checkCatForResp();
       showCards();
@@ -113,51 +112,50 @@ const checkCatForResp = () => {
 
 checkCatForResp();
 
-// console.log(subjResp);
-
 //FETCH response
-
-// let respBookArray = [];
 
 let respStartIndex = 0;
 
-const showCards = () => {
-  let titles = [];
+const sendRequest = () => {
+  let URL = `https://www.googleapis.com/books/v1/volumes?q="subject:${subjResp}"&key=${APIKey}&printType=books&startIndex=${respStartIndex}&maxResults=6&langRestrict=en`;
+  return fetch(URL)
+    .then((response) => response.json())
+    .then((result) => {
+      return result.items;
+    })
+    .catch((error) => {
+      console.error(`ERROR!  ${error}`);
+    });
+};
 
-  function response() {
-    let URL = `https://www.googleapis.com/books/v1/volumes?q="subject:${subjResp}"&key=${APIKey}&printType=books&startIndex=${respStartIndex}&maxResults=6&langRestrict=en`;
-    fetch(URL)
-      .then((res) => res.json())
-      .then((result) => {
-        return result.items;
-      })
-      .then((data) => {
-        for (i = 0; i < data.length + 1; i++) {
-          itemTitles[i].innerText = data[i].volumeInfo.title;
-          itemAuthor[i].innerHTML = data[i].volumeInfo.authors[0];
-          itemImages[
-            i
-          ].innerHTML = `<img src="${data[i].volumeInfo.imageLinks.thumbnail}" alt="" />`;
-          itemDiscs[i].innerText = data[i].searchInfo.textSnippet;
-        }
-      })
-      .catch((error) => {
-        console.error(`ERROR!  ${error}`);
-      });
-  }
-  response();
+//Show info from response on cards
+
+const showCards = () => {
+  sendRequest().then((data) => {
+    console.log(data);
+    for (i = 0; i < data.length; i++) {
+      console.log(data[i].volumeInfo.title);
+      itemTitles[i].innerHTML = data[i].volumeInfo.title;
+      itemAuthor[i].innerHTML = data[i].volumeInfo.authors[0];
+      itemImages[
+        i
+      ].innerHTML = `<img src="${data[i].volumeInfo.imageLinks.thumbnail}" alt="" />`;
+      itemDiscs[i].innerHTML = data[i].searchInfo.textSnippet;
+    }
+  });
 };
 
 showCards();
 
-const showMoreCards = () => {
+function showMoreCards() {
   loadMoreButton.addEventListener("click", () => {
     respStartIndex += 6;
     showCards();
   });
-};
+}
 
 showMoreCards();
+
 // };
 // console.log(result.items[0].volumeInfo.title); //Title
 // console.log(result.items[0].volumeInfo.authors[0]); //AUthor
@@ -166,11 +164,3 @@ showMoreCards();
 // console.log(result.items[0].searchInfo.textSnippet); //Price
 
 ////
-
-// //// Show Info form googlebook response
-
-// const showCards = () => {
-//   itemImages.forEach((item, index) => {
-//     item.innerHTML = `<img src=${itemImg} alt="" />`;
-//   });
-// };

@@ -11,6 +11,14 @@
   line-height: 10px;
   color: #4c3db2;
 }
+.cards-block__button:hover, .books-block button:hover {
+  transition: 0.3s;
+  transform: scale(1.1);
+}
+.cards-block__button:active, .books-block button:active {
+  transition: 0.3s;
+  transform: scale(0.9);
+}
 
 .book-list__list-item:hover, .sliderdotz__item:hover, .header__search:hover, .header__user-info:hover {
   transition: 0.3s;
