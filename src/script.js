@@ -17,18 +17,6 @@ const itemPrices = document.querySelectorAll(".cards-item__price");
 
 const loadMoreButton = document.querySelector(".books-block__button");
 
-const booksArray = [];
-
-const bookCardItem = {
-  image: "",
-  author: "",
-  title: "1",
-  stars: "",
-  views: "",
-  disc: "",
-  price: "",
-};
-
 ////Start Slider
 
 function initSlider() {
@@ -72,8 +60,6 @@ function initSlider() {
 
 addEventListener("DOMContentLoaded", initSlider);
 
-//// End Slider
-
 function bookCategoryNav() {
   let currentIndex = 0;
 
@@ -113,37 +99,37 @@ const checkCatForResp = () => {
 checkCatForResp();
 
 //FETCH response
-
 let respStartIndex = 0;
 
-const sendRequest = () => {
+async function sendRequest() {
   let URL = `https://www.googleapis.com/books/v1/volumes?q="subject:${subjResp}"&key=${APIKey}&printType=books&startIndex=${respStartIndex}&maxResults=6&langRestrict=en`;
-  return fetch(URL)
-    .then((response) => response.json())
-    .then((result) => {
-      return result.items;
-    })
-    .catch((error) => {
-      console.error(`ERROR!  ${error}`);
-    });
-};
+  const response = await fetch(URL);
+  const data = await response.json();
+  return data.items;
+}
 
 //Show info from response on cards
-
-const showCards = () => {
+function showCards() {
   sendRequest().then((data) => {
+    console.log("NEW REQUEST");
     console.log(data);
     for (i = 0; i < data.length; i++) {
-      console.log(data[i].volumeInfo.title);
+      // console.log(data[i].volumeInfo.title);
       itemTitles[i].innerHTML = data[i].volumeInfo.title;
-      itemAuthor[i].innerHTML = data[i].volumeInfo.authors[0];
+
+      if (data[i].volumeInfo.authors.length > 1) {
+        itemAuthor[i].innerHTML = data[i].volumeInfo.authors.toString();
+      } else {
+        itemAuthor[i].innerHTML = data[i].volumeInfo.authors[0];
+      }
+
       itemImages[
         i
       ].innerHTML = `<img src="${data[i].volumeInfo.imageLinks.thumbnail}" alt="" />`;
       itemDiscs[i].innerHTML = data[i].searchInfo.textSnippet;
     }
   });
-};
+}
 
 showCards();
 
