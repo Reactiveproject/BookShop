@@ -71,7 +71,7 @@ body p {
   position: absolute;
   bottom: -5px;
   left: 4px;
-  display: flex;
+  display: none;
   justify-content: center;
   width: 13px;
   height: 13px;
@@ -81,6 +81,9 @@ body p {
   font-family: "Montserrat", sans-serif;
   font-weight: 500;
   font-size: 10px;
+}
+.header__cart .cart-count__active {
+  display: flex;
 }
 
 main {
@@ -354,4 +357,10 @@ main {
   font-weight: 700;
   line-height: 16px;
   margin-bottom: 16px;
+}
+
+.button__tabbed {
+  color: #5c6a79;
+  font-style: bold;
+  background-color: gray;
 }/*# sourceMappingURL=style.css.map */

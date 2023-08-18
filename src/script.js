@@ -17,6 +17,10 @@ const itemPrices = document.querySelectorAll(".cards-item__price");
 
 const loadMoreButton = document.querySelector(".books-block__button");
 
+const buyButtons = document.querySelectorAll(".cards-item__button");
+const buyButton = document.querySelector(".cards-item__button");
+const cartCounter = document.querySelector(".cart-count");
+
 ////Start Slider
 
 function initSlider() {
@@ -160,3 +164,42 @@ showMoreCards();
 // console.log(result.items[0].searchInfo.textSnippet); //Price
 
 ////
+
+let shopCount = 0;
+
+cartCounter.innerHTML = shopCount;
+
+function checkCount(count) {
+  if (count) {
+    cartCounter.classList.add("cart-count__active");
+  } else {
+    cartCounter.classList.remove("cart-count__active");
+  }
+}
+
+checkCount(shopCount);
+
+function countPlus() {
+  ++shopCount;
+  cartCounter.innerHTML = shopCount;
+}
+
+function countMinus() {
+  --shopCount;
+  cartCounter.innerHTML = shopCount;
+}
+
+function addGoods() {
+  if (this.innerHTML == "buy now") {
+    this.classList.add("button__tabbed");
+    this.innerHTML = "remove";
+    countPlus();
+  } else {
+    this.classList.remove("button__tabbed");
+    this.innerHTML = "buy now";
+    countMinus();
+  }
+  checkCount(shopCount);
+}
+
+buyButtons.forEach((btn) => btn.addEventListener("click", addGoods));
