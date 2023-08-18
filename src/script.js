@@ -111,22 +111,32 @@ async function sendRequest() {
 //Show info from response on cards
 function showCards() {
   sendRequest().then((data) => {
-    console.log("NEW REQUEST");
     console.log(data);
     for (i = 0; i < data.length; i++) {
-      // console.log(data[i].volumeInfo.title);
+      console.log(data[i].volumeInfo.authors);
       itemTitles[i].innerHTML = data[i].volumeInfo.title;
-
-      if (data[i].volumeInfo.authors.length > 1) {
+      if (!data[i].volumeInfo.authors) {
+        itemAuthor[i].innerHTML = "N/A";
+      } else if (data[i].volumeInfo.authors.length > 1) {
         itemAuthor[i].innerHTML = data[i].volumeInfo.authors.toString();
       } else {
         itemAuthor[i].innerHTML = data[i].volumeInfo.authors[0];
       }
-
-      itemImages[
-        i
-      ].innerHTML = `<img src="${data[i].volumeInfo.imageLinks.thumbnail}" alt="" />`;
-      itemDiscs[i].innerHTML = data[i].searchInfo.textSnippet;
+      if (!data[i].volumeInfo.imageLinks) {
+        itemImages[
+          i
+        ].innerHTML = `<img src="/img/placeholder_pic.jpg" alt="pic of book" />`;
+      } else {
+        itemImages[
+          i
+        ].innerHTML = `<img src="${data[i].volumeInfo.imageLinks.thumbnail}" alt="pic of book" />`;
+      }
+      if (!data[i].volumeInfo.description) {
+        itemDiscs[i].innerHTML = "N/A";
+      } else {
+        itemDiscs[i].innerHTML = data[i].volumeInfo.description;
+      }
+      // }
     }
   });
 }
