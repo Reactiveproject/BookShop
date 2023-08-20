@@ -95,7 +95,6 @@ const checkCatForResp = () => {
   bookCategory.forEach((item) => {
     if (item.classList.contains("book-list__list-item_active")) {
       subjResp = item.innerText;
-      console.log(subjResp);
     }
   });
 };
@@ -117,7 +116,6 @@ function showCards() {
   sendRequest().then((data) => {
     console.log(data);
     for (i = 0; i < data.length; i++) {
-      console.log(data[i].volumeInfo.authors);
       itemTitles[i].innerHTML = data[i].volumeInfo.title;
       if (!data[i].volumeInfo.authors) {
         itemAuthor[i].innerHTML = "N/A";
@@ -139,6 +137,11 @@ function showCards() {
         itemDiscs[i].innerHTML = "N/A";
       } else {
         itemDiscs[i].innerHTML = data[i].volumeInfo.description;
+      }
+      if (data[i].saleInfo.retailPrice) {
+        itemPrices[
+          i
+        ].innerHTML = `${data[i].saleInfo.retailPrice.currencyCode} ${data[i].saleInfo.retailPrice.amount}`;
       }
     }
   });
@@ -195,3 +198,7 @@ function addGoods() {
 }
 
 buyButtons.forEach((btn) => btn.addEventListener("click", addGoods));
+
+// LOCALSTORAGE
+
+// const

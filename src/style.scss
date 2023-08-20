@@ -53,7 +53,7 @@ body {
 }
 
 .container {
-  width: 1440px;
+  max-width: 1440px;
 }
 
 .header {
@@ -64,6 +64,7 @@ body {
   transition: 0.3s;
   position: fixed;
   z-index: 22;
+  width: 100%;
   &__user-block {
     position: relative;
     display: flex;
@@ -331,6 +332,7 @@ main {
   &__button {
     @extend %button-style;
   }
+
   &__cards-item {
     // border: 1px solid red;
     display: flex;
