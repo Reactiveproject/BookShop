@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Nunito+Sans:wght@300;400&family=Yeseva+One&display=swap");
 .cards-block__button, .books-block button {
   width: 176px;
@@ -333,6 +334,32 @@ main {
 .cards-item__grade-block {
   display: flex;
   margin-bottom: 16px;
+  width: 100%;
+}
+.cards-item__stars {
+  position: relative;
+}
+.cards-item__stars::before {
+  content: "★★★★★";
+  display: block;
+  color: gray;
+}
+.cards-item__stars_active {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+.cards-item__stars_active::before {
+  content: "★★★★★";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: gold;
 }
 .cards-item__views {
   font-family: "Open sans", sans-serif;
