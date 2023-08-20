@@ -38,7 +38,7 @@ function initSlider() {
     posterItems[index].classList.add("poster-items__item_active");
   };
 
-  const Scroll = (item, index) => {
+  const scroll = (item, index) => {
     item.addEventListener("click", () => {
       currentIndex = index;
       thisPoster(currentIndex);
@@ -57,8 +57,8 @@ function initSlider() {
     }, 5000);
   };
 
-  posterItems.forEach(Scroll);
-  posterDotz.forEach(Scroll);
+  posterItems.forEach(scroll);
+  posterDotz.forEach(scroll);
   autoScroll();
 }
 
@@ -140,19 +140,18 @@ function showCards() {
       } else {
         itemDiscs[i].innerHTML = data[i].volumeInfo.description;
       }
-      // }
     }
   });
 }
 
 showCards();
 
-function showMoreCards() {
+const showMoreCards = () => {
   loadMoreButton.addEventListener("click", () => {
     respStartIndex += 6;
     showCards();
   });
-}
+};
 
 showMoreCards();
 
@@ -163,31 +162,24 @@ showMoreCards();
 // console.log(result.items[0].searchInfo.textSnippet); // Discritipon
 // console.log(result.items[0].searchInfo.textSnippet); //Price
 
-////
+//// Cart counter
 
 let shopCount = 0;
 
 cartCounter.innerHTML = shopCount;
 
-function checkCount(count) {
+const checkCount = (count) => {
   if (count) {
     cartCounter.classList.add("cart-count__active");
   } else {
     cartCounter.classList.remove("cart-count__active");
   }
-}
+};
 
 checkCount(shopCount);
 
-function countPlus() {
-  ++shopCount;
-  cartCounter.innerHTML = shopCount;
-}
-
-function countMinus() {
-  --shopCount;
-  cartCounter.innerHTML = shopCount;
-}
+const countPlus = () => (cartCounter.innerHTML = ++shopCount);
+const countMinus = () => (cartCounter.innerHTML = --shopCount);
 
 function addGoods() {
   if (this.innerHTML == "buy now") {
