@@ -152,6 +152,7 @@ function showCards() {
         itemStarsActive[i].style.width = `${
           data[i].volumeInfo.averageRating / 0.05
         }%`;
+      } else {
       }
     }
   });
