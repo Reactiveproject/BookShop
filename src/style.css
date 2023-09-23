@@ -249,9 +249,6 @@ main {
   padding-bottom: 23px;
   cursor: pointer;
 }
-.book-list__list-item:hover {
-  transform: scale(1.1);
-}
 .book-list__list-item_active {
   position: relative;
   font-size: 16px;
@@ -390,7 +387,6 @@ main {
 }
 
 .button__tabbed {
-  color: #5c6a79;
-  font-style: bold;
-  background-color: gray;
+  color: rgb(92, 106, 121) !important;
+  border: 1px solid rgb(92, 106, 121) !important;
 }/*# sourceMappingURL=style.css.map */

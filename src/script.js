@@ -198,7 +198,7 @@ const countMinus = () => (cartCounter.innerHTML = --shopCount);
 function addGoods() {
   if (this.innerHTML == "buy now") {
     this.classList.add("button__tabbed");
-    this.innerHTML = "remove";
+    this.innerHTML = "in the cart";
     countPlus();
   } else {
     this.classList.remove("button__tabbed");

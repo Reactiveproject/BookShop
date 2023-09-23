@@ -282,7 +282,6 @@ main {
     cursor: pointer;
     &:hover {
       @extend %Hover;
-      transform: scale(1.1);
     }
     &_active {
       position: relative;
@@ -466,7 +465,6 @@ main {
 // }
 
 .button__tabbed {
-  color: #5c6a79;
-  font-style: bold;
-  background-color: gray;
+  color: rgba(92, 106, 121, 1) !important;
+  border: 1px solid rgba(92, 106, 121, 1) !important;
 }
