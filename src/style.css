@@ -1,5 +1,10 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Nunito+Sans:wght@300;400&family=Yeseva+One&display=swap");
+.book-list__list-item:hover, .sliderdotz__item:hover, .header__search:hover, .header__user-info:hover, .cards-block__button:hover, .books-block button:hover {
+  transition: 0.3s;
+  transform: scale(1.1);
+}
+
 .cards-block__button, .books-block button {
   width: 176px;
   height: 45px;
@@ -12,18 +17,9 @@
   line-height: 10px;
   color: #4c3db2;
 }
-.cards-block__button:hover, .books-block button:hover {
-  transition: 0.3s;
-  transform: scale(1.1);
-}
 .cards-block__button:active, .books-block button:active {
   transition: 0.3s;
   transform: scale(0.9);
-}
-
-.book-list__list-item:hover, .sliderdotz__item:hover, .header__search:hover, .header__user-info:hover {
-  transition: 0.3s;
-  transform: scale(1.2);
 }
 
 body {
