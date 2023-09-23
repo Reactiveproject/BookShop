@@ -1,0 +1,112 @@
+.posters {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.poster-items {
+  display: inline-flex;
+  position: relative;
+  width: 1120px;
+  overflow: hidden;
+  justify-self: flex-start;
+  margin-bottom: 17px;
+  &__item {
+    display: none;
+    height: 100%;
+    position: relative;
+    &_active {
+      display: block;
+    }
+  }
+}
+
+.sliderdotz {
+  width: 56px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 105px;
+  &__item {
+    background-color: #efeef6;
+    border-radius: 50%;
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+    &_active {
+      background-color: #9e98dc;
+    }
+    &:hover {
+      @extend %Hover;
+    }
+  }
+}
+
+.tabbed {
+  border: 1px solid #eeedf5;
+  color: #5c6a79;
+}
+
+.poster-promo {
+  &__block1 {
+    position: absolute;
+    width: 149px;
+    height: 204px;
+    background-color: #9e98dc;
+    font-family: $Montserrat;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    top: 82px;
+    right: 70px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 25px 20px -15px rgba(185, 185, 185, 0.6);
+    & p {
+      padding-top: 100px;
+      padding-left: 20px;
+      max-width: 80%;
+    }
+    & .arrow {
+      padding-left: 20px;
+    }
+  }
+
+  &__block2 {
+    position: absolute;
+    width: 137px;
+    height: 273px;
+    background-color: #ff8fe6;
+    font-family: $Montserrat;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 22px;
+    top: 362px;
+    right: 0px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0px 25px 20px -15px rgba(185, 185, 185, 0.6);
+    & p {
+      padding-top: 149px;
+      padding-left: 20px;
+      max-width: 50%;
+    }
+    & .arrow {
+      padding-left: 20px;
+    }
+  }
+}
+
+.shop-block {
+  display: flex;
+  position: relative;
+}

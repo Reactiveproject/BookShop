@@ -35,3 +35,8 @@ $main-purple: #4c3db2;
     @extend %active;
   }
 }
+
+.button__tabbed {
+  color: rgba(92, 106, 121, 1) !important;
+  border: 1px solid rgba(92, 106, 121, 1) !important;
+}
