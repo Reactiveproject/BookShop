@@ -73,6 +73,11 @@
   }
 }
 
+.button__tabbed {
+  color: rgba(92, 106, 121, 1) !important;
+  border: 1px solid rgba(92, 106, 121, 0.4) !important;
+}
+
 .cards-item {
   &__img {
     width: 212px;

@@ -15,6 +15,9 @@ body {
     margin: 0;
     padding: 0;
   }
+  li {
+    list-style-type: none;
+  }
 }
 
 .container {
@@ -24,4 +27,8 @@ body {
 main {
   position: relative;
   top: 116px;
+}
+
+.hide-style {
+  display: none;
 }

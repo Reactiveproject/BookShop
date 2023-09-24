@@ -1,9 +1,12 @@
-//Google fonts
+// Fonts
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Nunito+Sans:wght@300;400&family=Yeseva+One&display=swap");
 
-// Fonts Variables
+//Variables
 $open-sans: "Open sans", sans-serif;
 $Montserrat: "Montserrat", sans-serif;
+$mobpoint1: 1000;
+
+//States
 %Hover {
   transition: 0.3s;
   transform: scale(1.1);
@@ -14,9 +17,9 @@ $Montserrat: "Montserrat", sans-serif;
 }
 //Colors
 $main-purple: #4c3db2;
+$main-gray: rgb(239, 238, 246);
 
 //Some elements
-
 %button-style {
   width: 176px;
   height: 45px;
@@ -36,7 +39,4 @@ $main-purple: #4c3db2;
   }
 }
 
-.button__tabbed {
-  color: rgba(92, 106, 121, 1) !important;
-  border: 1px solid rgba(92, 106, 121, 1) !important;
-}
+//====================
