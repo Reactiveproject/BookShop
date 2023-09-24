@@ -3,13 +3,11 @@
   background-color: white;
   justify-content: space-between;
   height: 116px;
-  transition: 0.3s;
   position: fixed;
-  z-index: 22;
+  z-index: 12;
   width: 100%;
   &__user-block {
     position: relative;
-    // order: 3;
     display: flex;
     padding-right: 160px;
     align-items: center;
@@ -114,25 +112,55 @@
     line-height: 29.26px;
     padding-right: 20px;
     align-items: center;
+    transition: all 5s ease 0s;
+    &:hover {
+      @extend %Hover;
+    }
+    &:active {
+      @extend %active;
+    }
   }
-
   &__burger-body {
+    display: none;
+    position: absolute;
+    width: 500px;
+    top: 90px;
+    right: 0;
+    background-color: rgba(239, 238, 246, 0.7);
+    transition: all 0.3s ease 0s;
   }
 
   &__burger-list {
     display: flex;
     flex-direction: column;
-    align-items: start;
-    background-color: rgba(239, 238, 246, 0.7);
-    position: absolute;
-    width: ;
-    right: 0;
-    top: 100px;
+    align-items: end;
   }
 
   &__burger-link {
     text-transform: uppercase;
     font-size: 14px;
-    padding: 10px 0 10px 10px;
+    padding: 10px 20px 30px 10px;
+    text-transform: uppercase;
+    font-family: $Montserrat;
+    font-weight: 500;
+    line-height: 12px;
+    &:hover {
+      @extend %Hover;
+    }
+    &:active {
+      @extend %active;
+    }
   }
+}
+
+.used {
+  padding-left: 20px;
+  padding-right: 0;
+  color: $main-gray;
+  transform: rotate(180deg) !important;
+}
+
+.shown {
+  display: block;
+  transform: translate(0px 10px);
 }

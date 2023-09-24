@@ -21,6 +21,15 @@ const loadMoreButton = document.querySelector(".books-block__button");
 const buyButtons = document.querySelectorAll(".cards-item__button");
 const buyButton = document.querySelector(".cards-item__button");
 const cartCounter = document.querySelector(".cart-count");
+const menuButton = document.querySelector(".header__burger-logo");
+const bugerMenuBody = document.querySelector(".header__burger-body");
+
+////Burger menu
+
+menuButton.addEventListener("click", () => {
+  menuButton.classList.toggle("used");
+  bugerMenuBody.classList.toggle("shown");
+});
 
 ////Start Slider
 
