@@ -1,9 +1,7 @@
 import { burgerMenuForMob } from "./modules/burgermenu";
 import { scroll, autoScroll, posterDotz, posterItems } from "./modules/slider";
-
-const APIKey = "AIzaSyCtJI5Ny3xpinAktf4VXAeiWG3j0-j1B1k";
-
-const bookCategory = document.querySelectorAll(".book-list__list-item");
+import { thisBookCategoty, bookCategory } from "./modules/bookcatnav";
+import { checkCatForResp, sendRequest } from "./modules/fetch";
 
 const bookCards = document.querySelectorAll(".cards-block__cards-item");
 
@@ -22,9 +20,6 @@ const buyButtons = document.querySelectorAll(".cards-item__button");
 const buyButton = document.querySelector(".cards-item__button");
 const cartCounter = document.querySelector(".cart-count");
 
-// const menuButton = document.querySelector(".header__burger-logo");
-// const bugerMenuBody = document.querySelector(".header__burger-body");
-
 ////Burger menu
 
 burgerMenuForMob();
@@ -37,61 +32,34 @@ posterDotz.forEach(scroll);
 autoScroll();
 
 ////Book sidebar category navigation
-function bookCategoryNav() {
-  let currentIndex = 0;
 
-  const thisBookCategoty = (index) => {
-    bookCategory.forEach((item) =>
-      item.classList.remove("book-list__list-item_active")
-    );
-    bookCategory[index].classList.add("book-list__list-item_active");
-  };
+let currentIndex = 0;
 
-  const chooseBookCategory = (item, index) => {
-    item.addEventListener("click", () => {
-      currentIndex = index;
-      thisBookCategoty(currentIndex);
-      checkCatForResp();
-      showCards();
-    });
-  };
-  bookCategory.forEach(chooseBookCategory);
-}
-
-bookCategoryNav();
-
-//// Response to GoogleBooks
-
-let subjResp;
-
-const checkCatForResp = () => {
-  bookCategory.forEach((item) => {
-    if (item.classList.contains("book-list__list-item_active")) {
-      subjResp = item.innerText;
-    }
+const chooseBookCategory = (item, index) => {
+  item.addEventListener("click", () => {
+    currentIndex = index;
+    thisBookCategoty(currentIndex);
+    checkCatForResp();
+    showCards();
   });
 };
 
+bookCategory.forEach(chooseBookCategory);
+
+//// Fetch response to GoogleBooks
+export let respStartIndex = 0;
+
 checkCatForResp();
 
-//FETCH response
-let respStartIndex = 0;
-
-async function sendRequest() {
-  let URL = `https://www.googleapis.com/books/v1/volumes?q="subject:${subjResp}"&key=${vars.APIKey}&printType=books&startIndex=${respStartIndex}&maxResults=6&langRestrict=en`;
-  const response = await fetch(URL);
-  const data = await response.json();
-  return data.items;
-}
-
-let loadedBookArray = [];
-
 //Show info from response on cards
+
+// let loadedBookArray = [];
+
 function showCards() {
   sendRequest().then((data) => {
-    loadedBookArray = data.slice(0);
-    console.log(loadedBookArray);
-    for (i = 0; i < data.length; i++) {
+    // loadedBookArray = data.slice(0);
+    // console.log(data)
+    for (let i = 0; i < data.length; i++) {
       itemTitles[i].innerHTML = data[i].volumeInfo.title;
       if (!data[i].volumeInfo.authors) {
         itemAuthor[i].innerHTML = "N/A";
@@ -133,14 +101,14 @@ function showCards() {
   });
 }
 
-showCards();
-
 const showMoreCards = () => {
   loadMoreButton.addEventListener("click", () => {
     respStartIndex += 6;
     showCards();
   });
 };
+
+showCards();
 
 showMoreCards();
 
@@ -181,45 +149,6 @@ showMoreCards();
 // LOCALSTORAGE
 
 //// класс для объекта "Корзина"
-
-class Cart {
-  products;
-  constructor() {
-    this.products = [];
-  }
-  get count() {
-    return this.products.length;
-  }
-  addProduct(product) {
-    this.products.push(product);
-  }
-  removeProduct(index) {
-    this.products.splice(index, 1);
-  }
-}
-
-const myCart = new Cart(); ////Создаем массив корзины
-
-//Проверяем наличие данных в крзине
-if (localStorage.getItem("cart") == null) {
-  localStorage.setItem("cart", JSON.stringify(myCart)); //если пусто - отправляем наш объект
-}
-
-const savedCart = JSON.parse(localStorage.getItem("cart")); //вытыскиваем объект из корзины
-myCart.products = savedCart.products; // записываем объект в нашу переменную
-
-cartCounter.textContent = myCart.count; // показываем количество объектов в массиве корзины на странице
-
-//функция проверки корзины для кнопок в блоке книг
-function checkBookInCart(data) {
-  if (myCart.includes(data[i].id)) {
-    this.classList.add("button__tabbed");
-    this.innerHTML = "in the cart";
-  } else {
-    this.classList.remove("button__tabbed");
-    this.innerHTML = "buy now";
-  }
-}
 
 function addGoods() {
   if (this.innerHTML == "buy now") {
