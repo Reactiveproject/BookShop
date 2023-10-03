@@ -1,8 +1,8 @@
-//// Variables & Constantes
+import { burgerMenuForMob } from "./modules/burgermenu";
+import { scroll, autoScroll, posterDotz, posterItems } from "./modules/slider";
+
 const APIKey = "AIzaSyCtJI5Ny3xpinAktf4VXAeiWG3j0-j1B1k";
 
-const posterItems = document.querySelectorAll(".poster-items__item");
-const posterDotz = document.querySelectorAll(".sliderdotz__item");
 const bookCategory = document.querySelectorAll(".book-list__list-item");
 
 const bookCards = document.querySelectorAll(".cards-block__cards-item");
@@ -21,59 +21,22 @@ const loadMoreButton = document.querySelector(".books-block__button");
 const buyButtons = document.querySelectorAll(".cards-item__button");
 const buyButton = document.querySelector(".cards-item__button");
 const cartCounter = document.querySelector(".cart-count");
-const menuButton = document.querySelector(".header__burger-logo");
-const bugerMenuBody = document.querySelector(".header__burger-body");
+
+// const menuButton = document.querySelector(".header__burger-logo");
+// const bugerMenuBody = document.querySelector(".header__burger-body");
 
 ////Burger menu
 
-menuButton.addEventListener("click", () => {
-  menuButton.classList.toggle("used");
-  bugerMenuBody.classList.toggle("shown");
-});
+burgerMenuForMob();
 
 ////Start Slider
 
-function initSlider() {
-  let currentIndex = 0;
+posterItems.forEach(scroll);
+posterDotz.forEach(scroll);
 
-  const thisPoster = (index) => {
-    posterDotz.forEach((item) =>
-      item.classList.remove("sliderdotz__item_active")
-    );
-    posterDotz[index].classList.add("sliderdotz__item_active");
+autoScroll();
 
-    posterItems.forEach((item) =>
-      item.classList.remove("poster-items__item_active")
-    );
-    posterItems[index].classList.add("poster-items__item_active");
-  };
-
-  const scroll = (item, index) => {
-    item.addEventListener("click", () => {
-      currentIndex = index;
-      thisPoster(currentIndex);
-    });
-  };
-
-  const autoScroll = () => {
-    let index = 0;
-    setInterval(() => {
-      thisPoster(index);
-      if (index == posterItems.length - 1) {
-        index = 0;
-      } else {
-        index++;
-      }
-    }, 5000);
-  };
-
-  posterItems.forEach(scroll);
-  posterDotz.forEach(scroll);
-  autoScroll();
-}
-
-addEventListener("DOMContentLoaded", initSlider);
-
+////Book sidebar category navigation
 function bookCategoryNav() {
   let currentIndex = 0;
 
@@ -115,16 +78,19 @@ checkCatForResp();
 let respStartIndex = 0;
 
 async function sendRequest() {
-  let URL = `https://www.googleapis.com/books/v1/volumes?q="subject:${subjResp}"&key=${APIKey}&printType=books&startIndex=${respStartIndex}&maxResults=6&langRestrict=en`;
+  let URL = `https://www.googleapis.com/books/v1/volumes?q="subject:${subjResp}"&key=${vars.APIKey}&printType=books&startIndex=${respStartIndex}&maxResults=6&langRestrict=en`;
   const response = await fetch(URL);
   const data = await response.json();
   return data.items;
 }
 
+let loadedBookArray = [];
+
 //Show info from response on cards
 function showCards() {
   sendRequest().then((data) => {
-    console.log(data);
+    loadedBookArray = data.slice(0);
+    console.log(loadedBookArray);
     for (i = 0; i < data.length; i++) {
       itemTitles[i].innerHTML = data[i].volumeInfo.title;
       if (!data[i].volumeInfo.authors) {
@@ -137,7 +103,7 @@ function showCards() {
       if (!data[i].volumeInfo.imageLinks) {
         itemImages[
           i
-        ].innerHTML = `<img src="/img/placeholder_pic.jpg" alt="pic of book" />`;
+        ].innerHTML = `<img src="/src/img/placeholder_pic.jpg" alt="pic of book" />`;
       } else {
         itemImages[
           i
@@ -178,47 +144,99 @@ const showMoreCards = () => {
 
 showMoreCards();
 
-// };
-// console.log(result.items[0].volumeInfo.title); //Title
-// console.log(result.items[0].volumeInfo.authors[0]); //AUthor
-// itemImages[0] = result.items[0].volumeInfo.imageLinks.thumbnail; //image
-// console.log(result.items[0].searchInfo.textSnippet); // Discritipon
-// console.log(result.items[0].searchInfo.textSnippet); //Price
-
 //// Cart counter
 
-let shopCount = 0;
+// let shopCount = 0;
 
-cartCounter.innerHTML = shopCount;
+// cartCounter.innerHTML = shopCount;
 
-const checkCount = (count) => {
-  if (count) {
-    cartCounter.classList.add("cart-count__active");
-  } else {
-    cartCounter.classList.remove("cart-count__active");
+// const checkCount = (count) => {
+//   if (count) {
+//     cartCounter.classList.add("cart-count__active");
+//   } else {
+//     cartCounter.classList.remove("cart-count__active");
+//   }
+// };
+
+// checkCount(shopCount);
+
+// const countPlus = () => (cartCounter.innerHTML = ++shopCount);
+// const countMinus = () => (cartCounter.innerHTML = --shopCount);
+
+// function addGoods() {
+//   if (this.innerHTML == "buy now") {
+//     this.classList.add("button__tabbed");
+//     this.innerHTML = "in the cart";
+//     countPlus();
+//   } else {
+//     this.classList.remove("button__tabbed");
+//     this.innerHTML = "buy now";
+//     countMinus();
+//   }
+//   checkCount(shopCount);
+// }
+
+// buyButtons.forEach((btn) => btn.addEventListener("click", addGoods));
+
+// LOCALSTORAGE
+
+//// класс для объекта "Корзина"
+
+class Cart {
+  products;
+  constructor() {
+    this.products = [];
   }
-};
+  get count() {
+    return this.products.length;
+  }
+  addProduct(product) {
+    this.products.push(product);
+  }
+  removeProduct(index) {
+    this.products.splice(index, 1);
+  }
+}
 
-checkCount(shopCount);
+const myCart = new Cart(); ////Создаем массив корзины
 
-const countPlus = () => (cartCounter.innerHTML = ++shopCount);
-const countMinus = () => (cartCounter.innerHTML = --shopCount);
+//Проверяем наличие данных в крзине
+if (localStorage.getItem("cart") == null) {
+  localStorage.setItem("cart", JSON.stringify(myCart)); //если пусто - отправляем наш объект
+}
+
+const savedCart = JSON.parse(localStorage.getItem("cart")); //вытыскиваем объект из корзины
+myCart.products = savedCart.products; // записываем объект в нашу переменную
+
+cartCounter.textContent = myCart.count; // показываем количество объектов в массиве корзины на странице
+
+//функция проверки корзины для кнопок в блоке книг
+function checkBookInCart(data) {
+  if (myCart.includes(data[i].id)) {
+    this.classList.add("button__tabbed");
+    this.innerHTML = "in the cart";
+  } else {
+    this.classList.remove("button__tabbed");
+    this.innerHTML = "buy now";
+  }
+}
 
 function addGoods() {
   if (this.innerHTML == "buy now") {
     this.classList.add("button__tabbed");
     this.innerHTML = "in the cart";
-    countPlus();
   } else {
     this.classList.remove("button__tabbed");
     this.innerHTML = "buy now";
-    countMinus();
   }
-  checkCount(shopCount);
 }
 
-buyButtons.forEach((btn) => btn.addEventListener("click", addGoods));
+//   checkCount(shopCount);
+// }
 
-// LOCALSTORAGE
-
-// const
+buyButtons.forEach((btn) =>
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log(e.target.closest(".cards-item__info"));
+  })
+);
