@@ -1,3 +1,4 @@
+const itemCards = document.querySelectorAll(".cards-block__cards-item");
 const itemImages = document.querySelectorAll(".cards-item__img");
 const itemAuthor = document.querySelectorAll(".cards-item__author");
 const itemTitles = document.querySelectorAll(".cards-item__title");
@@ -9,6 +10,7 @@ const itemPrices = document.querySelectorAll(".cards-item__price");
 
 function renderData(data) {
   for (let i = 0; i < data.length; i++) {
+    itemCards[i].setAttribute("bookid", data[i].id);
     itemTitles[i].innerHTML = data[i].volumeInfo.title;
     if (!data[i].volumeInfo.authors) {
       itemAuthor[i].innerHTML = "N/A";

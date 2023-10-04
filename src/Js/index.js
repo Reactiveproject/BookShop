@@ -4,8 +4,6 @@ import { thisBookCategoty, bookCategory } from "./modules/bookcatnav";
 import { checkCatForResp, sendRequest } from "./modules/fetch";
 import { renderData } from "./modules/renderdata";
 
-const bookCards = document.querySelectorAll(".cards-block__cards-item");
-
 const loadMoreButton = document.querySelector(".books-block__button");
 
 const buyButtons = document.querySelectorAll(".cards-item__button");
@@ -47,7 +45,6 @@ checkCatForResp();
 
 async function showCards() {
   let booksArray = await sendRequest();
-  console.log(booksArray);
   await renderData(booksArray);
 }
 
@@ -62,60 +59,12 @@ function showMoreCards() {
 
 showMoreCards();
 
-//// Cart counter
-
-// let shopCount = 0;
-
-// cartCounter.innerHTML = shopCount;
-
-// const checkCount = (count) => {
-//   if (count) {
-//     cartCounter.classList.add("cart-count__active");
-//   } else {
-//     cartCounter.classList.remove("cart-count__active");
-//   }
-// };
-
-// checkCount(shopCount);
-
-// const countPlus = () => (cartCounter.innerHTML = ++shopCount);
-// const countMinus = () => (cartCounter.innerHTML = --shopCount);
-
-// function addGoods() {
-//   if (this.innerHTML == "buy now") {
-//     this.classList.add("button__tabbed");
-//     this.innerHTML = "in the cart";
-//     countPlus();
-//   } else {
-//     this.classList.remove("button__tabbed");
-//     this.innerHTML = "buy now";
-//     countMinus();
-//   }
-//   checkCount(shopCount);
-// }
-
-// buyButtons.forEach((btn) => btn.addEventListener("click", addGoods));
-
-// LOCALSTORAGE
-
-//// класс для объекта "Корзина"
-
-function addGoods() {
-  if (this.innerHTML == "buy now") {
-    this.classList.add("button__tabbed");
-    this.innerHTML = "in the cart";
-  } else {
-    this.classList.remove("button__tabbed");
-    this.innerHTML = "buy now";
-  }
-}
-
-//   checkCount(shopCount);
-// }
+//// Cart
 
 buyButtons.forEach((btn) =>
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    console.log(e.target.closest(".cards-item__info"));
+  btn.addEventListener("click", (event) => {
+    event.preventDefault();
+    const targetCard = event.target.closest(".cards-block__cards-item");
+    bookId = targetCard.getAttribute("bookid");
   })
 );
