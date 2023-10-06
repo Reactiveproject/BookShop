@@ -8,6 +8,9 @@ const itemViews = document.querySelectorAll(".cards-item__views");
 const itemDiscs = document.querySelectorAll(".cards-item__disc");
 const itemPrices = document.querySelectorAll(".cards-item__price");
 
+const loadMoreButton = document.querySelector(".books-block__button");
+const buyButtons = document.querySelectorAll(".cards-item__button");
+
 function renderData(data) {
   for (let i = 0; i < data.length; i++) {
     itemCards[i].setAttribute("bookid", data[i].id);
@@ -51,4 +54,4 @@ function renderData(data) {
   }
 }
 
-export { renderData };
+export { renderData, loadMoreButton, buyButtons };

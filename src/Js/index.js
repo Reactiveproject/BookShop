@@ -2,13 +2,14 @@ import { burgerMenuForMob } from "./modules/burgermenu";
 import { scroll, autoScroll, posterDotz, posterItems } from "./modules/slider";
 import { thisBookCategoty, bookCategory } from "./modules/bookcatnav";
 import { checkCatForResp, sendRequest } from "./modules/fetch";
-import { renderData } from "./modules/renderdata";
-
-const loadMoreButton = document.querySelector(".books-block__button");
-
-const buyButtons = document.querySelectorAll(".cards-item__button");
-const buyButton = document.querySelector(".cards-item__button");
-const cartCounter = document.querySelector(".cart-count");
+import { renderData, buyButtons, loadMoreButton } from "./modules/renderdata";
+import {
+  catchAtribute,
+  putInCart,
+  atribut,
+  createCart,
+  checkDataOnPage,
+} from "./modules/cart";
 
 ////Burger menu
 
@@ -41,30 +42,27 @@ export let respStartIndex = 0;
 
 checkCatForResp();
 
-//Show info from response on cards
-
 async function showCards() {
   let booksArray = await sendRequest();
   await renderData(booksArray);
+  await checkDataOnPage();
 }
-
 showCards();
 
-function showMoreCards() {
-  loadMoreButton.addEventListener("click", () => {
-    respStartIndex += 6;
-    showCards();
-  });
-}
-
-showMoreCards();
+loadMoreButton.addEventListener("click", () => {
+  respStartIndex += 6;
+  showCards();
+});
 
 //// Cart
+// Начало работы с корзиной в ЛС.
 
-buyButtons.forEach((btn) =>
-  btn.addEventListener("click", (event) => {
-    event.preventDefault();
-    const targetCard = event.target.closest(".cards-block__cards-item");
-    bookId = targetCard.getAttribute("bookid");
-  })
-);
+createCart();
+
+buyButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    catchAtribute(btn);
+    putInCart(atribut);
+    checkDataOnPage();
+  });
+});
