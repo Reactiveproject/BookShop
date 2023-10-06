@@ -22,7 +22,6 @@ function createCart() {
   }
 }
 
-//
 function cartDataCheck() {
   const savedCart = JSON.parse(localStorage.getItem("cart"));
   myCart.products = savedCart.products;
@@ -35,6 +34,12 @@ function cartCounterCheck() {
   } else {
     cartCounter.classList.add("cart-count__active");
   }
+}
+
+function checkDataOnPage() {
+  cartDataCheck();
+  cartCounterCheck();
+  buttonCheck();
 }
 
 const catchAtribute = (item) => {
@@ -72,12 +77,6 @@ function putInCart(item) {
     myCart.products.splice(index, 1);
   }
   localStorage.setItem("cart", JSON.stringify(myCart));
-}
-
-function checkDataOnPage() {
-  cartDataCheck();
-  cartCounterCheck();
-  buttonCheck();
 }
 
 export { catchAtribute, putInCart, atribut, createCart, checkDataOnPage };

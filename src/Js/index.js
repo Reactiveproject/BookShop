@@ -55,7 +55,7 @@ loadMoreButton.addEventListener("click", () => {
 });
 
 //// Cart
-// Начало работы с корзиной в ЛС.
+// Начало работы с корзиной в localStorage.
 
 createCart();
 
