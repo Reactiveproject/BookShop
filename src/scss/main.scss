@@ -18,15 +18,18 @@ body {
   li {
     list-style-type: none;
   }
+  min-width: 320px;
 }
 
 .container {
-  max-width: 1440px;
+  max-width: $container-width;
+  border: 1px solid red;
+  margin: 0 auto;
+  padding: 0 5px;
 }
 
 main {
   position: relative;
-  top: 116px;
 }
 
 .hide-style {

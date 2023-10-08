@@ -7,42 +7,44 @@
     <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
-    <header class="header container">
-      <div class="header-logo">Bookshop</div>
-      <nav class="header-nav">
-        <a href="#" class="header-nav__link header-nav__link_active">Books</a>
-        <a href="#" class="header-nav__link">Audiobooks</a>
-        <a href="#" class="header-nav__link">Stationery & gifts</a>
-        <a href="#" class="header-nav__link">blog</a>
-      </nav>
-      <div class="header__user-block">
-        <div class="header__user-info">
-          <img src="/src/img/user_ico.png" alt="user_ico" />
+    <header class="header hide-style1">
+      <div class="header__wrapper container">
+        <div class="header-logo">Bookshop</div>
+        <nav class="header-nav">
+          <a href="#" class="header-nav__link header-nav__link_active">Books</a>
+          <a href="#" class="header-nav__link">Audiobooks</a>
+          <a href="#" class="header-nav__link">Stationery & gifts</a>
+          <a href="#" class="header-nav__link">blog</a>
+        </nav>
+        <div class="header__user-block">
+          <div class="header__user-info">
+            <img src="/src/img/user_ico.png" alt="user_ico" />
+          </div>
+          <div class="header__search">
+            <img src="/src/img/search_ico.png" alt="search_ico" />
+          </div>
+          <div class="header__cart">
+            <img src="/src/img/cart_ico.png" alt="cart_ico" />
+            <div class="cart-count"></div>
+          </div>
         </div>
-        <div class="header__search">
-          <img src="/src/img/search_ico.png" alt="search_ico" />
-        </div>
-        <div class="header__cart">
-          <img src="/src/img/cart_ico.png" alt="cart_ico" />
-          <div class="cart-count"></div>
-        </div>
-      </div>
-      <div class="header__burger-menu">
-        <div class="header__burger-logo used">Menu</div>
-        <div class="header__burger-body shown">
-          <ul class="header__burger-list">
-            <li class="header__burger-link"><a href="#">books</a></li>
-            <li class="header__burger-link"><a href="#">audiobooks</a></li>
-            <li class="header__burger-link">
-              <a href="#">Stationery & gifts</a>
-            </li>
-            <li class="header__burger-link"><a href="#">blog</a></li>
-          </ul>
+        <div class="header__burger-menu">
+          <div class="header__burger-logo">Menu</div>
+          <div class="header__burger-body">
+            <ul class="header__burger-list">
+              <li class="header__burger-link"><a href="#">books</a></li>
+              <li class="header__burger-link"><a href="#">audiobooks</a></li>
+              <li class="header__burger-link">
+                <a href="#">Stationery & gifts</a>
+              </li>
+              <li class="header__burger-link"><a href="#">blog</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </header>
-    <main class="hide-style1">
-      <section class="posters container">
+    <main class="container">
+      <section class="posters hide-style1">
         <div class="poster-items">
           <div class="poster-items__item poster-items__item_active">
             <img
@@ -71,20 +73,22 @@
           <div class="sliderdotz__item"></div>
           <div class="sliderdotz__item"></div>
         </div>
-        <div class="poster-promo__block1">
-          <p>Change old book on new</p>
-          <div class="arrow">
-            <img src="/src/img/arrow.svg" alt="arrow" />
+        <div class="poster-promo-wraper">
+          <div class="poster-promo__block1 hide-style1">
+            <p>Change old book on new</p>
+            <div class="arrow">
+              <img src="/src/img/arrow.svg" alt="arrow" />
+            </div>
           </div>
-        </div>
-        <div class="poster-promo__block2">
-          <p>top 100 books 2022</p>
-          <div class="arrow">
-            <img src="/src/img/arrow.svg" alt="arrow" />
+          <div class="poster-promo__block2 hide-style1">
+            <p>top 100 books 2022</p>
+            <div class="arrow">
+              <img src="/src/img/arrow.svg" alt="arrow" />
+            </div>
           </div>
         </div>
       </section>
-      <section class="shop-block container">
+      <section class="shop-block hide-style">
         <nav class="book-list">
           <div class="book-list__list-item book-list__list-item_active">
             Architecture
