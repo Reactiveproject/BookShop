@@ -13,7 +13,10 @@ const buyButtons = document.querySelectorAll(".cards-item__button");
 
 function renderData(data) {
   for (let i = 0; i < data.length; i++) {
-    itemCards[i].setAttribute("bookid", data[i].id);
+    itemCards[i].setAttribute(
+      "bookid",
+      data[i].volumeInfo.industryIdentifiers[0].identifier
+    );
     itemTitles[i].innerHTML = data[i].volumeInfo.title;
     if (!data[i].volumeInfo.authors) {
       itemAuthor[i].innerHTML = "N/A";

@@ -18,6 +18,7 @@ async function sendRequest() {
   let URL = `https://www.googleapis.com/books/v1/volumes?q="subject:${subjResp}"&key=${APIKey}&printType=books&startIndex=${respStartIndex}&maxResults=6&langRestrict=en`;
   const response = await fetch(URL);
   const data = await response.json();
+  console.log(data.items);
   return data.items;
 }
 
