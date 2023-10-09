@@ -4,10 +4,10 @@
 //Variables
 $open-sans: "Open sans", sans-serif;
 $Montserrat: "Montserrat", sans-serif;
-$container-width: 1110px;
+$container-width: 1150px;
 $laptop-point: 1420px;
 $teblet-point: 1025px;
-$mobile-point1: 769px;
+$mobile-point1: 770px;
 $mobile-point2: 426px;
 $mobile-point3: 376px;
 
@@ -41,6 +41,12 @@ $main-gray: rgb(239, 238, 246);
   }
   &:active {
     @extend %active;
+  }
+  @media (max-width: 544px) {
+    width: 150px;
+  }
+  @media (max-width: $mobile-point3) {
+    width: 100px;
   }
 }
 

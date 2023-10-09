@@ -8,6 +8,9 @@
     display: flex;
     justify-content: space-between;
     height: 116px;
+    @media (max-width: $mobile-point1) {
+      height: 70px;
+    }
   }
 
   &__user-block {
@@ -16,11 +19,14 @@
     align-items: center;
     justify-content: space-between;
     width: 120px;
-    @media (max-width: $mobile-point2) {
-      width: 120px;
+    @media (max-width: $laptop-point) {
+      padding-right: 10px;
     }
-    @media (max-width: $mobile-point3) {
-      width: 70px;
+    @media (max-width: $mobile-point1) {
+      width: 150px;
+    }
+    @media (max-width: $mobile-point2) {
+      width: 100px;
     }
   }
 
@@ -74,11 +80,11 @@
   font-size: 24px;
   line-height: 29.26px;
   // padding-left: 160px;
-  @media (max-width: $mobile-point1) {
-    padding-left: 20px;
+  @media (max-width: $laptop-point) {
+    padding-left: 10px;
   }
-  @media (max-width: $mobile-point2) {
-    font-size: 18px;
+  @media (max-width: $mobile-point1) {
+    font-size: 22px;
   }
 }
 .header-nav {
@@ -117,8 +123,12 @@
     }
   }
   &__burger-logo {
-    @media (max-width: $mobile-point2) {
-      font-size: 18px;
+    @media (max-width: $laptop-point) {
+      padding-right: 10px;
+    }
+    @media (max-width: $mobile-point1) {
+      font-size: 22px;
+      padding-right: 10px;
     }
     font-family: $Montserrat;
     font-weight: 700;
@@ -176,6 +186,6 @@
 
 .shown {
   display: block;
-  right: -5px;
+  // right: -5px;
   // transform: translate(0px 10px);
 }

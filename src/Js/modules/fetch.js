@@ -6,6 +6,8 @@ import { respStartIndex } from "..";
 
 let subjResp;
 
+let countOfResult;
+
 const checkCatForResp = () => {
   bookCategory.forEach((item) => {
     if (item.classList.contains("book-list__list-item_active")) {
