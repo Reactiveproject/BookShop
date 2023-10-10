@@ -1,9 +1,7 @@
 let path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const PugPlugin = require("pug-plugin");
 
 module.exports = {
   entry: path.resolve(__dirname, "./src/Js/index.js"),
@@ -15,11 +13,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "Bookshop Project",
-      template: path.resolve(__dirname, "./src/index.html"), // шаблон
-      filename: "index.html",
+      template: path.resolve(__dirname, "./src/index.html"),
     }),
     new MiniCssExtractPlugin(),
-    // new PugPlugin(),
   ],
   optimization: {
     minimizer: [
@@ -37,10 +33,6 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
-      },
-      {
-        test: /.pug$/,
-        loader: PugPlugin.loader,
       },
     ],
   },

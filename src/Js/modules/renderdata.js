@@ -2,7 +2,6 @@ const itemCards = document.querySelectorAll(".cards-block__cards-item");
 const itemImages = document.querySelectorAll(".cards-item__img");
 const itemAuthor = document.querySelectorAll(".cards-item__author");
 const itemTitles = document.querySelectorAll(".cards-item__title");
-const itemStars = document.querySelectorAll(".cards-item__stars");
 const itemStarsActive = document.querySelectorAll(".cards-item__stars_active");
 const itemViews = document.querySelectorAll(".cards-item__views");
 const itemDiscs = document.querySelectorAll(".cards-item__disc");
@@ -44,7 +43,6 @@ function renderData(data) {
         i
       ].innerHTML = `${data[i].saleInfo.retailPrice.currencyCode} ${data[i].saleInfo.retailPrice.amount}`;
     }
-
     if (data[i].volumeInfo.ratingsCount) {
       itemViews[i].innerHTML = `${data[i].volumeInfo.ratingsCount} review`;
     }
@@ -52,7 +50,6 @@ function renderData(data) {
       itemStarsActive[i].style.width = `${
         data[i].volumeInfo.averageRating / 0.05
       }%`;
-    } else {
     }
   }
 }

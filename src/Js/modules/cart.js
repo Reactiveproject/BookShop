@@ -14,7 +14,7 @@ class Cart {
 
 let atribut;
 
-const myCart = new Cart(); ////Создаем массив корзины
+const myCart = new Cart();
 
 function createCart() {
   if (localStorage.getItem("cart") == null) {
