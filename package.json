@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack serve --open --mode development",
-    "build": "webpack --mode development",
-    "prod": "webpack --mode production",
+    "build": "webpack --mode production",
     "build:watch": "webpack --watch"
   },
   "author": "Reactive Project",
