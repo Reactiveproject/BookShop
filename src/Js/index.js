@@ -1,3 +1,5 @@
+import "../scss/main.scss";
+
 import { burgerMenuForMob } from "./modules/burgermenu";
 import { scroll, autoScroll, posterDotz, posterItems } from "./modules/slider";
 import { thisBookCategoty, bookCategory } from "./modules/bookcatnav";
